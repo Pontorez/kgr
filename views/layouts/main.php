@@ -1,0 +1,103 @@
+<?php
+
+/* @var $this \yii\web\View */
+/* @var $content string */
+
+use yii\helpers\Html;
+use yii\bootstrap\Nav;
+use yii\bootstrap\NavBar;
+use yii\widgets\Breadcrumbs;
+use app\assets\AppAsset;
+
+AppAsset::register($this);
+?>
+<?php $this->beginPage() ?>
+<!DOCTYPE html>
+<html lang="<?= Yii::$app->language ?>">
+<head>
+    <meta charset="<?= Yii::$app->charset ?>">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <?= Html::csrfMetaTags() ?>
+    <title><?= Html::encode($this->title) ?></title>
+    <?php $this->head() ?>
+    <?php if (!Yii::$app->user->isGuest) {?>
+        <style>
+            html, body, #map-canvas {
+                height: 100%;
+                margin: 0;
+                padding: 0
+            }
+            #map-canvas {
+                height: 600px;
+            }
+        </style>
+    <?php } ?>
+
+</head>
+<body>
+<?php $this->beginBody() ?>
+
+<div class="wrap">
+    <?php
+    NavBar::begin([
+        'brandLabel' => 'KGR',
+        'brandUrl' => Yii::$app->homeUrl,
+        'options' => [
+            'class' => 'navbar-inverse navbar-fixed-top',
+        ],
+    ]);
+
+    $menuItems = [
+        ['label' => 'Home', 'url' => ['/site/index']],
+    ];
+
+    if (Yii::$app->user->isGuest) {
+        $menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];
+        $menuItems[] = ['label' => 'Register', 'url' => ['/site/signup']];
+    } else {
+        $menuItems[] = [
+            'label' => 'Logout (' . Yii::$app->user->identity->username . ')',
+            'url' => ['/site/logout'],
+            'linkOptions' => ['data-method' => 'post']
+        ];
+    }
+
+    echo Nav::widget([
+        'options' => ['class' => 'navbar-nav navbar-right'],
+        'items' => $menuItems,
+    ]);
+    NavBar::end();
+    ?>
+
+    <div class="container">
+        <?= Breadcrumbs::widget([
+            'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
+        ]) ?>
+        <?= $content ?>
+    </div>
+</div>
+
+<footer class="footer">
+    <div class="container">
+        <p class="pull-left">&copy; KGR <?= date('Y') ?></p>
+
+        <p class="pull-right"><?= Yii::powered() ?></p>
+    </div>
+</footer>
+
+<?php
+yii\bootstrap\Modal::begin([
+    'headerOptions' => ['id' => 'modalHeader'],
+    'id' => 'modal',
+    'size' => 'modal-lg',
+]);
+echo "<div id='modalContent'></div>";
+yii\bootstrap\Modal::end();
+?>
+
+
+
+<?php $this->endBody() ?>
+</body>
+</html>
+<?php $this->endPage() ?>
