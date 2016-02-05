@@ -18,7 +18,8 @@
         "yiisoft/yii2": ">=2.0.5",
         "yiisoft/yii2-bootstrap": "*",
         "yiisoft/yii2-swiftmailer": "*",
-        "vakorovin/yii2-datetimepicker": "dev-master"
+        "vakorovin/yii2-datetimepicker": "dev-master",
+        "fxp/composer-asset-plugin": "*"
     },
     "require-dev": {
         "yiisoft/yii2-codeception": "*",
