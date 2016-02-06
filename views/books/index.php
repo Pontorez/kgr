@@ -27,8 +27,8 @@ $this->params['breadcrumbs'][] = $this->title;
             'name',
             [
                 'attribute' => 'preview',
-                'content' => function () {
-                    return '<a href="/img/1.jpg" class="showModalButton"><img src="/img/1.jpg" style="max-width: 150px"/></a>';
+                'content' => function ($data) {
+                    return '<a href="/img/' . $data->preview . '" class="showModalButton"><img src="/img/' . $data->preview . '" style="max-width: 150px"/></a>';
                 }
             ],
             [
