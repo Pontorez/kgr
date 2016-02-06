@@ -93,3 +93,7 @@ a.desc:after {
 #modalContent h1 {
     margin-top: 0;
 }
+
+#modalContent > img {
+    max-width: 100%;
+}

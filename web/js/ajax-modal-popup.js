@@ -1,20 +1,14 @@
 $(function () {
     $(document).on('click', '.showModalButton', function () {
-        if ($('#modal').data('bs.modal').isShown) {
-            $('#modal').find('#modalContent')
-                .load($(this).attr('value'));
-            //dynamiclly set the header for the modal
+        var modal = $('#modal');
+        if (modal.data('bs.modal').isShown) {
+            modal.find('#modalContent').load($(this).attr('value'));
             document.getElementById('modalHeader').innerHTML = '<h4>' + $(this).attr('title') + '</h4>';
         } else {
-
-            if ($(this)[0].href.indexOf('.jpg') != - 1) {
-                $('#modal').modal('show')
-                    .find('#modalContent')
-                    .html('<img src="/img/1.jpg" style="max-width: 100%"/>');
+            if ($(this)[0].href.indexOf('/img/') != - 1) {
+                modal.modal('show').find('#modalContent').html('<img src="' + $(this)[0].href + '"/>');
             } else {
-                $('#modal').modal('show')
-                    .find('#modalContent')
-                    .load($(this).attr('href'));
+                modal.modal('show').find('#modalContent').load($(this).attr('href'));
                 document.getElementById('modalHeader').innerHTML = '<h4>' + $(this).attr('title') + '</h4>';
             }
         }
