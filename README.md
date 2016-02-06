@@ -5,5 +5,5 @@
 5. ```./composer.phar install```
 6. Set database connection params in ```config/db.php```
 7. ```./yii migrate/up```
-8. configure new web server vhost with document root pointing to ```web``` folder
-9. open new vhost in browser & log in using ```admin/admin``` (or create a new user)
+8. Configure new web server vhost with document root pointing to ```web``` folder
+9. Open new vhost in a web browser & log in using ```admin/admin``` (or register a new user)

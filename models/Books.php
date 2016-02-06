@@ -71,6 +71,14 @@ class Books extends \yii\db\ActiveRecord
     public function beforeSave($insert)
     {
         $this->date_update = date('Y-m-d H:i:s');
+
+        // Save preview image:
+        $previewFileExtension = explode('.', $_FILES['Books']['name']['preview']);
+        $previewFileExtension = array_pop($previewFileExtension);
+        if (in_array($previewFileExtension, ['jpg', 'gif', 'png'])) {
+            $this->preview = Yii::$app->security->generateRandomString(16) . '.' . $previewFileExtension;
+            move_uploaded_file($_FILES['Books']['tmp_name']['preview'], Yii::getAlias('@webroot') . '/img/' . $this->preview);
+        }
         return parent::beforeSave($insert);
     }
 }
