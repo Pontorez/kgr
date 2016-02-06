@@ -12,7 +12,7 @@ class m160206_032141_remove_unused_column extends Migration
 
     public function safeDown()
     {
-        $this->addColumn('{{%user}}', 'password', 'DECIMAL(20,2) DEFAULT 0 AFTER `balance`');
+        $this->addColumn('{{%user}}', 'password', 'VARCHAR(255) DEFAULT "" AFTER `email`');
     }
 
 }
