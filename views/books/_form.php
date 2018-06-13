@@ -1,5 +1,6 @@
 <?php
 
+use kartik\date\DatePicker;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
@@ -15,13 +16,19 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
 
 
-    <?= $form->field($model, 'date')->widget(\vakorovin\datetimepicker\Datetimepicker::className(), ['options' => [
-        'lang' => 'ru',
-        'format' => 'Y-m-d',
-        'timepicker' => false,
-        'value' => $model->date,
-        'mask' => '9999-99-99',
-    ]]); ?>
+    <?= $form->field($model, 'date')->widget(DatePicker::class, [
+        'options' => [
+            'lang' => 'ru',
+            'format' => 'Y-m-d',
+            'timepicker' => false,
+            'value' => $model->date,
+            'mask' => '9999-99-99',
+        ],
+        'pluginOptions' => [
+            'format' => 'yyyy-mm-dd',
+            'autoclose' => true,
+        ]
+    ]); ?>
 
     <?= $form->field($model, 'author_id')->dropDownList(\app\models\Authors::getAuthors()) ?>
 

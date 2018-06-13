@@ -11,7 +11,7 @@ $this->title = 'My Yii Application';
     <div class="jumbotron">
         <h1>Hello World!</h1>
 
-        <p class="lead">Please register &amp; sign in to see the application.</p>
+        <p class="lead">Please register &amp; sign in to see the application (or use admin/admin to <a href="/site/login">sign in</a>).</p>
 
         <p><a class="btn btn-lg btn-success" href="/site/signup">Register</a></p>
     </div>

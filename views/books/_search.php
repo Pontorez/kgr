@@ -1,5 +1,6 @@
 <?php
 
+use kartik\date\DatePicker;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
@@ -28,20 +29,34 @@ use yii\widgets\ActiveForm;
     <div class="row">
         <div class="col-md-2" style="line-height: 35px"><label>Дата выхода книги: </label></div>
         <div class="col-md-2">
-            <?= $form->field($model, 'date0')->widget(\vakorovin\datetimepicker\Datetimepicker::className(), ['options' => [
-                'lang' => 'ru',
-                'format' => 'Y-m-d',
-                'timepicker' => false,
-            ]])->label(false); ?>
+
+            <?= $form->field($model, 'date0')->widget(DatePicker::class, [
+                'options' => [
+                    'lang' => 'ru',
+                    'style' => 'width: 100px',
+                ],
+                'pluginOptions' => [
+                    'format' => 'yyyy-mm-dd',
+                    'autoclose' => true,
+                ]
+            ])->label(false);
+            ?>
+
         </div>
 
         <div class="col-md-1 text-center" style="line-height: 35px">до</div>
         <div class="col-md-2">
-            <?= $form->field($model, 'date1')->widget(\vakorovin\datetimepicker\Datetimepicker::className(), ['options' => [
-                'lang' => 'ru',
-                'format' => 'Y-m-d',
-                'timepicker' => false,
-            ]])->label(false); ?>
+            <?= $form->field($model, 'date1')->widget(DatePicker::class, [
+                'options' => [
+                    'lang' => 'ru',
+                    'style' => 'width: 100px',
+                ],
+                'pluginOptions' => [
+                    'format' => 'yyyy-mm-dd',
+                    'autoclose' => true,
+                ]
+            ])->label(false);
+            ?>
         </div>
         <div class="col-md-5">
             <?= Html::submitButton(Yii::t('app', 'Искать'), ['class' => 'btn btn-primary']) ?>
